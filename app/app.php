@@ -17,5 +17,11 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->post("/items", function() use ($app) {
+        $item = New Inventory($_POST['item']);
+        $item->save();
+        return $app['twig']->render('index.html.twig', array('items' =>Inventory::getAll()));
+    });
+
     return $app;
 ?>
