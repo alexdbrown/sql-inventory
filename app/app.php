@@ -4,6 +4,8 @@
 
     $app = new Silex\Application();
 
+    $app['debug'] = true;
+
     $server = 'mysql:host=localhost;dbname=inventory';
     $username = 'root';
     $password = 'root';
@@ -26,6 +28,11 @@
     $app->post("/delete_items", function() use ($app) {
         Inventory::deleteAll();
         return $app['twig']->render('index.html.twig');
+    });
+
+    $app->post("/search_items", function() use ($app) {
+        $results = Inventory::find($_POST['search_item']);
+        return $app['twig']->render('search_results.html.twig', array('results' => $results));
     });
 
     return $app;

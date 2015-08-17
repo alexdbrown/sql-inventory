@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Hoard Search!</title>
+    </head>
+    <body>
+        <h1>Search results:</h1>
+
+        {% if results is not empty %}
+            {% for match in results %}
+                <p>{{ match.getItemName }}</p>
+            {% endfor %}
+            <p>No junk found</p>
+        {% endif %}
+    </body>
+</html>

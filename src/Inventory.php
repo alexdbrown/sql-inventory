@@ -44,13 +44,13 @@
             $GLOBALS['DB']->exec("DELETE FROM items;");
         }
 
-        static function find($search_id)
+        static function find($search_item_name)
         {
-            $found_Inventory = null;
+            $found_item = null;
             $items = Inventory::getAll();
             foreach ($items as $item) {
-                $item_id = $item->getId();
-                if ($item_id == $search_id) {
+                $item_name = $item->getItemName();
+                if ($item_name == $search_item_name) {
                     $found_item = $item;
                 }
             }
