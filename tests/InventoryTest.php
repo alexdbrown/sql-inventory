@@ -51,5 +51,23 @@
             $this->assertEquals([$test_Inventory, $test_Inventory2], $result);
         }
 
+        function test_deleteAll()
+        {
+            //Arrange
+            $item = "Antique Toothpick Holders";
+            $item2 = "Ornamental Mouse Traps";
+            $test_Inventory = new Inventory($item);
+            $test_Inventory->save();
+            $test_Inventory2 = new Inventory($item2);
+            $test_Inventory2->save();
+
+            //Act
+            Inventory::deleteAll();
+
+            //Assert
+            $result = Inventory::getAll();
+            $this->assertEquals([], $result);
+        }
+
     }
  ?>
