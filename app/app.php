@@ -18,9 +18,14 @@
     });
 
     $app->post("/items", function() use ($app) {
-        $item = New Inventory($_POST['item']);
+        $item = new Inventory($_POST['item']);
         $item->save();
-        return $app['twig']->render('index.html.twig', array('items' =>Inventory::getAll()));
+        return $app['twig']->render('index.html.twig', array('items' => Inventory::getAll()));
+    });
+
+    $app->post("/delete_items", function() use ($app) {
+        Inventory::deleteAll();
+        return $app['twig']->render('index.html.twig');
     });
 
     return $app;
