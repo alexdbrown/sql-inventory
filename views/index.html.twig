@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Hoard it!</title>
+    </head>
+    <body>
+        <h1>Welcome to your collection, fellow hoarder!</h1>
+
+        {% if inventory is not empty %}
+            <p>Here are all the wierd things you own:</p>
+            <ul>
+                {% for item in inventory %}
+                    <li>{{ item.getItemName }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form action='/items' method='post'>
+            <label for='item'>Item name:</label>
+            <input id='item' name='item' type='text'>
+
+            <button type='submit'>Add junk</button>
+        <form>
+        <form action='/delete_items' method='post'>
+            <button type='submit'>Clear junk</button>
+        </form>
+    </body>
+</html>
