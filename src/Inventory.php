@@ -43,5 +43,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM items;");
         }
+
+        static function find($search_id)
+        {
+            $found_Inventory = null;
+            $items = Inventory::getAll();
+            foreach ($items as $item) {
+                $item_id = $item->getId();
+                if ($item_id == $search_id) {
+                    $found_item = $item;
+                }
+            }
+
+            return $found_item;
+        }
     }
  ?>
