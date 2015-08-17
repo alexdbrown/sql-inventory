@@ -34,6 +34,22 @@
             $this->assertEquals($test_Inventory, $result[0]);
         }
 
+        function test_getAll()
+        {
+            //Arrange
+            $item = "Antique Toothpick Holders";
+            $item2 = "Ornamental Mouse Traps";
+            $test_Inventory = new Inventory($item);
+            $test_Inventory->save();
+            $test_Inventory2 = new Inventory($item2);
+            $test_Inventory2->save();
+
+            //Act
+            $result = Inventory::getAll();
+
+            //Assert
+            $this->assertEquals([$test_Inventory, $test_Inventory2], $result);
+        }
 
     }
  ?>
