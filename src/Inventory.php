@@ -15,6 +15,11 @@
             return $this->item_name;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO items (name) VALUES ('{$this->getItemName()}');");

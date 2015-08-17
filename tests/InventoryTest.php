@@ -69,5 +69,19 @@
             $this->assertEquals([], $result);
         }
 
+        function test_getId()
+        {
+            //Arrange
+            $item = "Antique Toothpick Holders";
+            $id = 1;
+            $test_Inventory = new Inventory($item, $id);
+
+            //Act
+            $result = $test_Inventory->getId();
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
     }
  ?>
